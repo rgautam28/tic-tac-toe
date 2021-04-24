@@ -1,10 +1,12 @@
 import React from "react";
+import Board from "./Components/Board"
 
 const App = () => {
   return  (
   <>
-    <h1>Who is the best?</h1>
-    <p>Rakshit Gautam is the best</p>
+    <h1>Tic Tac Toe</h1>
+    <small><i>by: Rakshit Gautam</i></small>
+    <Board />
   </>
   )
 };
