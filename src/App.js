@@ -14,11 +14,8 @@ const App = () => {
   const current = history[currentMove];
   
   const {winner, winningSquares} = calculateWinner(current.board);
-  console.log(winner);
 
   const message = winner ? `winner is ${winner}`: `Next player is ${current.isXNext ? 'X' : 'O'}`
-
-    console.log(history);
 
     const handleSquareClick = (position) =>{
         if(current.board[position] || winner){
@@ -27,9 +24,6 @@ const App = () => {
         
         setHistory( (prev) => {
           const last= prev[prev.length-1]
-
-
-
             const newBoard = last.board.map((Square, pos) => {
                 if(pos == position){
                     return last.isXNext ? 'X' : 'O';
@@ -52,12 +46,14 @@ const App = () => {
 
   return  (
   <div className="app">
-    <h1>Tic Tac Toe</h1>
-    <small>by: Rakshit Gautam</small>
+    <h1>TIC <span className="text-green">TAC</span> TOE</h1>
+    <small style={{fontWeight: "normal"}}>by: Rakshit Gautam</small>
     <StatusMessage winner={winner} current={current}/>
     <Board board={current.board} handleSquareClick={handleSquareClick} winningSquares={winningSquares} />
-    <button type="button" onClick={onNewGame}>Start New Game</button>
+    <h2 style={{fontWeight: "normal"}}>Current Game History</h2>
+    <button type="button" onClick={onNewGame} className={`btn-reset ${winner ? 'active' : ''}`}>Start New Game</button>
     <History history={history} moveTo={moveTo} currentMove={currentMove}/> 
+    <div className="bg-balls" />
   </div>
   )
 };
